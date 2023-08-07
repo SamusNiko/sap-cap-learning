@@ -25,6 +25,7 @@
   },
   "scripts": {
     "start": "cds run",
+    "start-local": "cds watch --profile hybrid",
     "watch-risks": "cds watch --open risks/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
@@ -61,11 +62,12 @@
           "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER"
         }
       },
-      "[productio]": {
-        "db": "hana-cloud"
-      },
       "db": "sql",
       "[production]": {
+        "db": "hana-cloud",
+        "auth": "xsuaa"
+      },
+      "[hybrid]": {
         "db": "hana-cloud",
         "auth": "xsuaa"
       }

@@ -1,5 +1,39 @@
-{
-  "scopes": [],
+{  
+  "xsappname": "risk-management-76b04381trial-dev",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.RiskViewer",
+      "description": "RiskViewer"
+    },
+    {
+      "name": "$XSAPPNAME.RiskManager",
+      "description": "RiskManager"
+    }
+  ],
   "attributes": [],
-  "role-templates": []
+  "role-templates": [
+    {
+      "name": "RiskViewer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.RiskViewer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "RiskManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.RiskManager"
+      ],
+      "attribute-references": []
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://76b04381trial-dev-risk-management.cfapps.us10-001.hana.ondemand.com/**",
+      "https://port5000-workspaces-ws-xqnld.us10.trial.applicationstudio.cloud.sap/**"
+    ]
+  }
 }

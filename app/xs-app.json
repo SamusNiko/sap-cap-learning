@@ -1,6 +1,9 @@
 
 {
   "welcomeFile": "/app/risks/webapp/index.html",
+  "logout": {
+    "logoutEndpoint": "/my/logout"
+  },
   "routes": [
     {
       "source": "^/app/(.*)$",
