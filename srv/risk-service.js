@@ -37,10 +37,7 @@ module.exports = cds.service.impl(async function () {
         req.query.where("LastName <> '' and FirstName <> '' ");
 
         return await BPsrv.transaction(req).send({
-            query: req.query,
-            headers: {
-                apikey: process.env.apikey,
-            },
+            query: req.query
         });
     });
 
@@ -95,15 +92,12 @@ module.exports = cds.service.impl(async function () {
                         query: SELECT.one(this.entities.BusinessPartners)
                             .where({ BusinessPartner: risk.bp_BusinessPartner })
                             .columns(["BusinessPartner", "LastName", "FirstName"]),
-                        headers: {
-                            apikey: process.env.apikey,
-                        },
                     });
                     risk.bp = bp;
                 })
             );
         } catch (error) {
-            // console.log("error: ", error);
+            console.log("error: ", error);
         }
     });
 });

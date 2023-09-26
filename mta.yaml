@@ -24,6 +24,7 @@ modules:
     requires:
       - name: risk-management-db
       - name: risk-management-auth
+      - name: risk-management-destination
 
   - name: risk-management-db-deployer
     type: hdb
@@ -65,15 +66,20 @@ resources:
         xsappname: risk-management-${org}-${space}
         tenant-mode: dedicated
         role-collections:
-        - name: 'RiskManager-${space}'
-          description: Manage Risks
-          role-template-references:
-          - $XSAPPNAME.RiskManager
-        - name: 'RiskViewer-${space}'
-          description: View Risks
-          role-template-references:
-          - $XSAPPNAME.RiskViewer
+          - name: 'RiskManager-${space}'
+            description: Manage Risks
+            role-template-references:
+              - $XSAPPNAME.RiskManager
+          - name: 'RiskViewer-${space}'
+            description: View Risks
+            role-template-references:
+              - $XSAPPNAME.RiskViewer
         oauth2-configuration:
           redirect-uris:
             - https://76b04381trial-dev-risk-management.cfapps.us10-001.hana.ondemand.com/login/callback,
             - https://port5000-workspaces-ws-xqnld.us10.trial.applicationstudio.cloud.sap/login/callback
+  - name: risk-management-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
